@@ -91,7 +91,24 @@ if(!empty($_GET['command'])) {
 }
 
 echo '<h1>'. $activeScene->getTitle() .'</h1>';
-echo '<p>'. $activeScene->getDescription() .'</p>';
+echo '<p id="message"></p>';
 foreach($activeScene->getTransitions() AS $transition) {
     echo '<li><a href="?command='. $transition->getCommand() .'">'. $transition->getCommand() .'</a></li>';
 }
+?>
+<script type="text/javascript">
+    let message = "<?php echo $activeScene->getDescription() ?>";
+    console.log(message);
+    let number = 0;
+    function typeWriter(message){
+        for(let i = 0; i < message.length; i++){
+            let random = Math.floor(Math.random() * 100);
+            number += random;
+            setTimeout(function (){
+                document.getElementById('message').innerHTML += message[i];
+            }, number);
+        }
+    }
+
+    typeWriter(message);
+</script>

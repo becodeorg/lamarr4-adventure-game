@@ -1,5 +1,37 @@
 <?php
+
 class Item {}
+
+class Player {
+    private string $name;
+
+    /**
+     * Player constructor.
+     * @param string $name
+     */
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+
+}
 
 class Transition { //inmutable
     private string $command;
@@ -63,18 +95,21 @@ class Scene {
         return $this->items;
     }
 
-    public function findValidTransation(string $command)
+    public function findValidTransition(string $command)
     {
         foreach($this->getTransitions() AS $transition) {
-            
-        }
+            if($transition->getCommand() === $command) {
+                return $transition->getScene();
+            }
+        } return null;
     }
 }
+session_start();
 
 $scenes = [
-    'unicorn' => new Scene('Search for the unicorn.', 'You are looking for the unicorn. But you do not see him, only some hoofs left in the poo. But there is something else in the poo... namely, a key! All "shiny".'),
+    'unicorn' => new Scene('Search for the unicorn.', 'You are looking for the unicorn. But you do not see him, only some hoofs left in the poop. But there is something else in the poop... namely, a key! All shiny.'),
     'zombiefight' => new Scene('Fight against the zombies!', 'Do you fight the zombies or do you walk away? After all, there a super slow!'),
-    'openingscene' => new Scene('Welcome to the game', 'The world is gone. The only thing left in the rubble is a road. The way up is blocked by angry crows! To the right you see a skelleton and zombies! To the left there are traces of a unicorn. Which way do you go?')
+    'openingscene' => new Scene('Welcome to the game,', 'The world is gone. The only thing left in the rubble is a road. The way up is blocked by angry crows! To the right you see a skeleton and zombies! To the left there are traces of a unicorn. Which way do you go?')
 ];
 
 $scenes['openingscene']->addTransition(new Transition('left', $scenes['unicorn']));
@@ -82,20 +117,39 @@ $scenes['openingscene']->addTransition(new Transition('right', $scenes['zombiefi
 
 $activeScene = $scenes['openingscene'];
 
+if(isset($_POST['player'])) {
+    $player = new Player($_POST['player']);
+    $_SESSION['player'] = $player;
+
+} else if(isset($_SESSION)){
+    $player = $_SESSION['player'];
+}
+else {
+    $player = new Player('Dummy');
+}
+
 if(!empty($_GET['command'])) {
-    $activeScene = $activeScene->findValidTransation($_GET['command']);
+    $activeScene = $activeScene->findValidTransition($_GET['command']);
 
     if($activeScene === null) {
-        die('Someboy do this better than me!');//@todo!
+        die('Someboy or somegirl do this better than me!');//@todo!
     }
 }
 
+
+echo '<h2>'. $player->getName() .'</h2>';
 echo '<h1>'. $activeScene->getTitle() .'</h1>';
 echo '<p id="message"></p>';
 foreach($activeScene->getTransitions() AS $transition) {
     echo '<li><a href="?command='. $transition->getCommand() .'">'. $transition->getCommand() .'</a></li>';
 }
 ?>
+<form action="" method="post">
+    <label for="player">
+        <input type="text" name="player">
+    </label>
+</form>
+
 <script type="text/javascript">
     let message = "<?php echo $activeScene->getDescription() ?>";
     console.log(message);

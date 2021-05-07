@@ -121,7 +121,7 @@ if(isset($_POST['player'])) {
     $player = new Player($_POST['player']);
     $_SESSION['player'] = $player;
 
-} else if(isset($_SESSION)){
+} else if(isset($_SESSION['player'])){
     $player = $_SESSION['player'];
 }
 else {

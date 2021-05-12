@@ -17,7 +17,7 @@ include './View/includes/header.php';
             <h1><?php echo $activeScene->getTitle();?></h1>
             <p id="message"></p>
             <?php foreach($activeScene->getTransitions() as $transition) :?>
-                <li><a href="?command=<?php echo $transition->getCommand();?>"><?php echo $transition->getCommand();?></a></li>
+                <li><div class="buttonbg"><a class="buttonz" href="?command=<?php echo $transition->getCommand();?>"><?php echo $transition->getCommand();?></a></div></li>
             <?php endforeach;?>
         </div>
         <form action="" method="post">
@@ -29,6 +29,15 @@ include './View/includes/header.php';
     <div class="background-container">
         <div class="layer background"></div>
         <div class="layer foreground"></div>
+    </div>
+
+    <div class="container">
+        <div class="dragon wings">
+        </div>
+        <div class="dragon body">
+        </div>
+        <div class="dragon head">
+        </div>
     </div>
 </main>
 

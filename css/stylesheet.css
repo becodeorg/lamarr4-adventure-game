@@ -9,6 +9,7 @@
     color: #333;
 }
 
+
 .first-section {
     top: 40px;
     left: 40px;
@@ -23,8 +24,27 @@ li {
     display: flex;
 }
 
+.buttonbg {
+    height: 5vh;
+    width: 10vw;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #E14114;
+    /*background-color: #FFE16E;*/
+    /*margin: 5px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonz {
+    color: #E14114;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .textcontent {
-    width: 80%;
+    width: 50%;
     background-color: rgba(245, 245, 245, 0.85);
     border-radius: 8px;
     margin: 0 auto;
@@ -70,4 +90,88 @@ li {
 @keyframes background {
     from { background-position: 0 0; }
     to { background-position: 2048px; }
+}
+
+.dragon {
+    position: absolute;
+    background-size: 30%;
+}
+
+.wings {
+    left: 0;
+    top: 0;
+    height: 1546px;
+    width: 100%;
+    background-image: url("../img/DragonWings.png");
+    background-repeat: no-repeat;
+    transform: translateX(65%) translateY(10%);
+    animation: wings-shift 5s linear infinite;
+}
+
+.body {
+    left: 0;
+    top: 0;
+    height: 1546px;
+    width: 100%;
+    background-image: url("../img/DragonBody.png");
+    background-repeat: no-repeat;
+    transform: translateX(65%) translateY(10%);
+    animation: body-shift 5s linear infinite;
+}
+
+.head {
+    left: 0;
+    top: 0;
+    height: 1546px;
+    width: 100%;
+    background-image: url("../img/DragonHead.png");
+    background-repeat: no-repeat;
+    transform: translateX(65%) translateY(10%);
+    animation: head-shift 5s linear infinite;
+    z-index: +1;
+}
+
+@keyframes wings-shift {
+    0% {
+        left: 0;
+        top: 0;
+    }
+    50% {
+        left: -20px;
+        top: 15px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes body-shift {
+    0% {
+        left: 0;
+        top: 0;
+    }
+    50% {
+        left: -20px;
+        top: -3px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes head-shift {
+    0% {
+        left: 0;
+        top: 0;
+    }
+    50% {
+        left: -10px;
+        top: 5px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
 }

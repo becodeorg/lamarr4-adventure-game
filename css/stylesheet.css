@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 * {
@@ -9,7 +10,7 @@
     color: #333;
 }
 
-
+/* text */
 .first-section {
     top: 40px;
     left: 40px;
@@ -65,22 +66,82 @@ li {
     position: absolute;
 }
 
-.foreground {
-    height: 100%;
-    width: 100%;
-    background-image: url('../img/foreground.png');
-    background-repeat: repeat-x;
-    animation: foreground 200s linear infinite;
-    background-size: contain;
-}
-
 .background {
     height: 100%;
     width: 100%;
-    background-image: url('../img/background.png');
+    background-image: url('../img/Homepage- the world is gone/1_background.png');
     background-repeat: repeat-x;
-    animation: background 100s linear infinite;
     background-size: contain;
+}
+
+.moutain{
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/Homepage- the world is gone/3_moutain.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    margin-top: 200px;
+}
+
+.moon{
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/Homepage- the world is gone/2_moon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -10%;
+    left: 10%;
+}
+
+.fog1{
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/Homepage- the world is gone/4_fog.png');
+    background-repeat: repeat-x;
+    animation: background 500s linear infinite;
+    background-size: contain;
+}
+.hills{
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/Homepage- the world is gone/5_trees.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+.fog2{
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/Homepage- the world is gone/6_fog.png');
+    background-repeat: repeat-x;
+    animation: background 400s linear infinite;
+    background-size: contain;
+}
+
+.crows{
+    height: 20%;
+    width: 20%;
+    background-image: url('../img/Homepage- the world is gone/7_crows.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 67%;
+    left: 35%;
+}
+
+.foreground {
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/Homepage- the world is gone/9_threeways.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+.unicorn{
+    height: 11%;
+    width: 50%;
+    background-image: url('../img/Homepage- the world is gone/8_unicorn.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 79%;
+    left: 20%;
 }
 
 @keyframes foreground {

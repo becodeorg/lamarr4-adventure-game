@@ -28,36 +28,27 @@ class HomepageController
 
         $scenes['pitOfDoom']->addTransition(new Transition('left', $scenes['unicorn']));
 
-        if (!isset($_SESSION['currentScene']))
-        {
+        if (!isset($_SESSION['currentScene'])) {
             $_SESSION['currentScene'] = $scenes['openingscene'];
         }
         $activeScene = $_SESSION['currentScene'];
 
 
-
-        if (isset($_POST['player']))
-        {
+        if (isset($_POST['player'])) {
             $player = new Player($_POST['player']);
             $_SESSION['player'] = $player;
 
-        }
-        else if (isset($_SESSION['player']))
-        {
+        } else if (isset($_SESSION['player'])) {
             $player = $_SESSION['player'];
-        }
-        else
-        {
+        } else {
             $player = new Player('Dummy');
         }
 
-        if (!empty($_GET['command']))
-        {
+        if (!empty($_GET['command'])) {
 
-             $nextScene = $_SESSION['currentScene']->findValidTransition($_GET['command']);
+            $nextScene = $_SESSION['currentScene']->findValidTransition($_GET['command']);
 
-            if ($nextScene=== null)
-            {
+            if ($nextScene === null) {
                 die('Someboy or somegirl do this better than me!');//@todo!
             }
             $activeScene = $nextScene;

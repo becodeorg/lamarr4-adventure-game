@@ -46,7 +46,12 @@ class Scene
         return $this->items;
     }
 
-    public function findValidTransition(string $command)
+    public function addItem(Item $item):void
+    {
+        $this->items[] = $item;
+    }
+
+    public function getSceneByCommand(string $command) : ?Scene
     {
         foreach ($this->getTransitions() as $transition) {
             if ($transition->getCommand() === $command) {

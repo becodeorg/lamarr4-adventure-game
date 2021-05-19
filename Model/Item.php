@@ -2,6 +2,6 @@
 
 namespace Model;
 
-class Item
+abstract class Item implements ItemInterface
 {
 }

@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Diaper;
 use Model\Player;
 use Model\Scene;
 use Model\Transition;
@@ -26,7 +27,9 @@ class HomepageController
         $scenes['unicorn']->addTransition(new Transition('left', $scenes['pitOfDoom']));
         $scenes['unicorn']->addTransition(new Transition('right', $scenes['openingscene']));
 
-        $scenes['pitOfDoom']->addTransition(new Transition('left', $scenes['unicorn']));
+        $scenes['pitOfDoom']->addTransition(new Transition('right', $scenes['unicorn']));
+
+        //pit--unicorn--openingscene--zombie
 
         if (!isset($_SESSION['currentScene'])) {
             $_SESSION['currentScene'] = $scenes['openingscene'];
@@ -46,12 +49,32 @@ class HomepageController
 
         if (!empty($_GET['command'])) {
 
-            $nextScene = $_SESSION['currentScene']->findValidTransition($_GET['command']);
+            $nextScene = $activeScene->getSceneByCommand($_GET['command']);
 
             if ($nextScene === null) {
                 die('Someboy or somegirl do this better than me!');//@todo!
             }
             $activeScene = $nextScene;
+        }
+
+        $_SESSION['currentScene'] = $activeScene;
+
+        $scenes['pitOfDoom']->addItem(new Diaper());
+
+        if (!empty($_GET['action'])){
+            if ($_GET['action']==='use'){
+                foreach ($activeScene->getItems() as $item){
+                    $item->use();
+                }
+            }
+        }
+
+
+        if (!empty($_GET['action'] && !empty($_GET['item_id']))){
+            if ($_GET['action'] === 'use'){
+               //todo $the_item = $activeScene->getItemById($_GET['item_id']);
+                //todo $the_item->use();
+            }
         }
 
 

@@ -21,10 +21,15 @@ include './View/includes/header.php';
             <h2><?php echo $player->getName();?></h2>
             <h1><?php echo $activeScene->getTitle();?></h1>
             <p id="message"></p>
-            <?php foreach($activeScene->getTransitions() as $transition) :?>
+            <!--    <?php foreach($activeScene->getTransitions() as $transition) :?>
                 <li><div class="buttonbg"><a class="buttonz" href="?command=<?php echo $transition->getCommand();?>"><?php echo $transition->getCommand();?></a></div></li>
             <?php endforeach;?>
-        </div>
+        </div>-->
+        <form class="textcontent text-center mx-auto" action="" method="post">
+            <label for="command">What do you do?</label>
+            <input type="text" name="command" id="command">
+            <input class= "buttonz" type="submit" value="Command!">
+        </form>
 
     </section>
     <div class="background-container">

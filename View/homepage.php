@@ -19,7 +19,7 @@ include './View/includes/header.php';
         </form>
         <div class="textcontent text-center mx-auto">
             <h2><?php echo $player->getName();?></h2>
-            <h1><?php echo $activeScene->getTitle();?></h1>
+            <h1 class="title"><?php echo $activeScene->getTitle();?></h1>
             <p id="message"></p>
             <!--    <?php foreach($activeScene->getTransitions() as $transition) :?>
                 <li><div class="buttonbg"><a class="buttonz" href="?command=<?php echo $transition->getCommand();?>"><?php echo $transition->getCommand();?></a></div></li>
@@ -52,6 +52,7 @@ include './View/includes/header.php';
         <div class="dragon head">
         </div>
     </div>
+
 </main>
 
 

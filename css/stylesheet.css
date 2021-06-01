@@ -236,3 +236,31 @@ li {
         top: 0px;
     }
 }
+
+.title {
+    font-size: 48px;
+    color: #d8d8f6;
+    padding: 10px;
+    animation: neon .9s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+    from  {
+        text-shadow :
+    0 0 6px rgba(202, 228, 225, 0.92),
+    0 0 30px rgba(202, 228, 225, 0.34),
+    0 0 12px rgba(36, 41, 50, 0.52),
+    0 0 21px rgba(36, 41, 50, 0.92),
+    0 0 34px rgba(36, 41, 50, 0.78),
+    0 0 52px rgba(36, 41, 50, 0.92);
+    }
+    to {
+        text-shadow :
+                0 0 6px rgba(202, 228, 225, 0.98),
+                0 0 30px rgba(202, 228, 225, 0.42),
+                0 0 12px rgba(36, 41, 50, 0.58),
+                0 0 22px rgba(36, 41, 50, 0.84),
+                0 0 38px rgba(36, 41, 50, 0.88),
+                0 0 60px rgba(36, 41, 50, 1);
+    }
+}

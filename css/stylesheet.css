@@ -264,3 +264,52 @@ li {
                 0 0 60px rgba(36, 41, 50, 1);
     }
 }
+
+/*
+#252839
+#383d52
+#01fe87
+*/
+
+.nameBox{
+    display: flex;
+    background-color: #252839;
+    padding: 30px;
+    opacity: 0.8;
+    justify-content: center;
+    align-items: center;
+    min-height: 20px;
+}
+h2{
+    position: relative;
+    color: #252839;
+    -webkit-text-stroke:0.1vw #383d52;
+    text-transform: uppercase;
+}
+h2::before
+{
+    content: attr(data-text);
+    position: absolute;
+    color: #01fe87;
+    top: 0;
+    left:0;
+    width: 0;
+    height: 100%;
+    border-right: 2px solid  #01fe87;
+    overflow: hidden;
+    -webkit-text-stroke: 0vw #383d52;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate
+{
+ 0%,10%
+ {
+     width: 0;
+ }
+    70%,90%
+    {
+        width: 100%;
+    }
+
+}

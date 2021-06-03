@@ -26,14 +26,21 @@ include './View/includes/header.php';
 
 
             <p id="message"></p>
-            <!--    <?php foreach($activeScene->getTransitions() as $transition) :?>
-                <li><div class="buttonbg"><a class="buttonz" href="?command=<?php echo $transition->getCommand();?>"><?php echo $transition->getCommand();?></a></div></li>
-            <?php endforeach;?>
-        </div>-->
+
         <form class="textcontent text-center mx-auto" action="" method="post">
             <label for="command">What do you do?</label>
-            <input type="text" name="command" id="command">
+            <select class="form-control form-select-lg mb-5" aria-label="Default select example" name="command">
+                <option selected>--Select Movement--</option>
+                <?php foreach ($activeScene->getTransitions() as $transition):?>
+                <option value="<?php echo $transition->getCommand();?>">
+                    <?php echo $transition->getCommand();?>
+                </option>
+
+           <?php endforeach;?>
+
+
             <input class= "buttonz" type="submit" value="Command!">
+            </select>
         </form>
 
     </section>

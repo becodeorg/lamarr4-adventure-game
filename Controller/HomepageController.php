@@ -23,14 +23,14 @@ class HomepageController
             'insideTheShack' => new Scene("you entered the shack", "") //@todo write more stuffs
         ];
 
-        $scenes['openingscene']->addTransition(new Transition('left', $scenes['theShack']));
-        $scenes['openingscene']->addTransition(new Transition('right', $scenes['unicorn']));
+        $scenes['openingscene']->addTransition(new Transition('go to the shack!', $scenes['theShack']));
+        $scenes['openingscene']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
 
-        $scenes['zombiefight']->addTransition(new Transition('left', $scenes['unicorn']));
-        $scenes['zombiefight']->addTransition(new Transition('right', $scenes['pitOfDoom']));
+        $scenes['zombiefight']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
+        $scenes['zombiefight']->addTransition(new Transition('Go tp the Doom', $scenes['pitOfDoom']));
 
-        $scenes['unicorn']->addTransition(new Transition('left', $scenes['openingscene']));
-        $scenes['unicorn']->addTransition(new Transition('right', $scenes['zombiefight']));
+        $scenes['unicorn']->addTransition(new Transition('Go back to the beginning', $scenes['openingscene']));
+        $scenes['unicorn']->addTransition(new Transition('Go for the zombies', $scenes['zombiefight']));
 
         $scenes['pitOfDoom']->addTransition(new Transition('left', $scenes['zombiefight']));
         $scenes['pitOfDoom']->addTransition(new Transition('right', $scenes['theShack']));
@@ -87,7 +87,7 @@ class HomepageController
         }
 
 
-        if (!empty($_GET['action'] && !empty($_GET['item_id']))){
+        if (isset($_GET['action']) && isset($_GET['item_id'])){
             if ($_GET['action'] === 'use'){
                //todo $the_item = $activeScene->getItemById($_GET['item_id']);
                 //todo $the_item->use();

@@ -43,6 +43,13 @@ include './View/includes/header.php';
             </select>
         </form>
 
+            <ul>
+                <?php foreach ($player->getItems() AS $item): ?>
+                    <li><?php echo $item->getName() ?></li>
+                <?php endforeach;?>
+            </ul>
+
+
     </section>
     <div class="background-container">
         <div class="layer background"></div>

@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\Diaper;
+use Model\Item;
 use Model\Player;
 use Model\Scene;
 use Model\Transition;
@@ -71,6 +72,10 @@ class HomepageController
         $_SESSION['currentScene'] = $activeScene;
 
         $scenes['pitOfDoom']->addItem(new Diaper());
+
+        if ($activeScene === $scenes['zombiefight']) {
+            $player->addItem(new Item('machete'));
+        }
 
         if (!empty($_GET['action'])){
             if ($_GET['action']==='use'){

@@ -6,9 +6,9 @@ namespace Model;
 
 class Diaper extends Item
 {
-    Public function use()
+    public function use(): void
     {
         // TODO: Implement use() method.
-        return "you've been bamboozled";
+        //return "you've been bamboozled";
     }
 }

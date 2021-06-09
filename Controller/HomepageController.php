@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Controller;
+
 
 use Model\Diaper;
 use Model\Item;
@@ -71,7 +73,7 @@ class HomepageController
 
         $_SESSION['currentScene'] = $activeScene;
 
-        $scenes['pitOfDoom']->addItem(new Diaper());
+        $scenes['pitOfDoom']->addItem(new Diaper('Mr.dirty diaper'));
 
         if ($activeScene === $scenes['zombiefight']) {
             $player->addItem(new Item('machete'));

@@ -23,8 +23,16 @@ class Item implements ItemInterface
         return $this->name;
     }
 
+    public function attack(Player $player): int {
+        $randNum = rand(0,10);
+        $skill_level = $player->getSkill();
+        $randNum += $skill_level;
+        return $randNum;
+    }
 
-    public function use() {
+
+    public function use(): void {
+
 
     }
 

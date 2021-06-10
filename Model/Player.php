@@ -16,10 +16,10 @@ class Player
      * Player constructor.
      * @param string $name
      */
-    public function __construct(string $name, int $health)
+    public function __construct(string $name)
     {
         $this->name = $name;
-        $this->health = $health;
+
 
     }
 

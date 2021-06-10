@@ -15,6 +15,10 @@ class Scene
     /** @var Item[] */
     private array $items = [];
 
+    /** @var Item[] */
+    private array $requiredItems = [];
+
+
     public function __construct(string $title, string $description)
     {
         $this->title = $title;
@@ -49,6 +53,35 @@ class Scene
     public function addItem(Item $item):void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @return Item[]
+     */
+    public function getRequiredItems(): array
+    {
+        return $this->requiredItems;
+    }
+
+
+    public function addRequiredItem(Item $requiredItem): void
+    {
+        $this->requiredItems[] = $requiredItem;
+    }
+
+
+    public function removeItem(Item $item):void {
+
+
+        foreach($this->items as $key => $value){
+            if($item->getName() === $value->getName()){
+                unset($this->items[$key]);
+            }
+
+
+
+        }
+
     }
 
     public function getSceneByCommand(string $command) : ?Scene

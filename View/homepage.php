@@ -14,7 +14,7 @@ include './View/includes/header.php';
     <section class="first-section">
         <form class="textcontent text-center mx-auto" action="" method="post">
             <label for="player">Your name</label>
-            <input type="text" name="player" id="player">
+            <input type="text" name="playerName" id="player">
             <input class= "buttonz" type="submit" value="submit name">
         </form>
         <div class="textcontent text-center mx-auto">

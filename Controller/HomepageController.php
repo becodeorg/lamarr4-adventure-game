@@ -29,11 +29,13 @@ class HomepageController
         $scenes['openingscene']->addTransition(new Transition('go to the shack!', $scenes['theShack']));
         $scenes['openingscene']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
 
+
         $scenes['zombiefight']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
         $scenes['zombiefight']->addTransition(new Transition('Go tp the Doom', $scenes['pitOfDoom']));
 
         $scenes['unicorn']->addTransition(new Transition('Go back to the beginning', $scenes['openingscene']));
         $scenes['unicorn']->addTransition(new Transition('Go for the zombies', $scenes['zombiefight']));
+        $scenes['unicorn']->addItem(new Item('key'));
 
         $scenes['pitOfDoom']->addTransition(new Transition('left', $scenes['zombiefight']));
         $scenes['pitOfDoom']->addTransition(new Transition('right', $scenes['theShack']));
@@ -50,11 +52,12 @@ class HomepageController
         $activeScene = $_SESSION['currentScene'];
 
 
-        if (isset($_POST['player'])) {
-            $player = new Player($_POST['player']);
-            $_SESSION['player'] = $player;
+        if (isset($_POST['playerName'])) {
 
-        } else if (isset($_SESSION['player'])) {
+            $_SESSION['player']->setName($_POST['playerName']);
+
+        }
+        if (isset($_SESSION['player'])) {
             $player = $_SESSION['player'];
         } else {
             $player = new Player('Dummy');
@@ -73,6 +76,15 @@ class HomepageController
 
         $_SESSION['currentScene'] = $activeScene;
 
+        if(!empty($_SESSION['currentScene']->getItems())){
+           foreach($_SESSION['currentScene']->getItems() as $item){
+
+               $player->addItem($item);
+               $_SESSION['currentScene']->removeItem($item);
+           }
+
+        }
+        // @ Todo check if item is stored in player
         $scenes['pitOfDoom']->addItem(new Diaper('Mr.dirty diaper'));
 
         if ($activeScene === $scenes['zombiefight']) {

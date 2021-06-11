@@ -5,14 +5,17 @@ namespace Model;
 class Item implements ItemInterface
 {
     private string $name;
+    private string $action;
 
     /**
      * Item constructor.
      * @param string $name
+     * @param string $action
      */
-    public function __construct(string $name)
+    public function __construct(string $name, string $action)
     {
         $this->name = $name;
+        $this->action =$action;
     }
 
     /**
@@ -28,6 +31,14 @@ class Item implements ItemInterface
         $skill_level = $player->getSkill();
         $randNum += $skill_level;
         return $randNum;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAction(): string
+    {
+        return $this->action;
     }
 
 

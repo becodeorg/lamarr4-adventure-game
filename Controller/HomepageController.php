@@ -25,17 +25,26 @@ class HomepageController
             'theShack' => new Scene("The abandoned shack", "It's an old abandoned shack! It looks as if it might collapse at any moment. This shack might hold a lot of useful tools for you to use!"),
             'insideTheShack' => new Scene("you entered the shack", "") //@todo write more stuffs
         ];
+        $items = [
+            'key' => new Item('key', 'You unlock the wooden door'),
+            'diaper' => new Diaper('empty', 'Ypu scoop of the magic'),
+            'butterfly' => new Item("butterfly", "The butterfly distracts the zombies away."),
+            'torch'=> new Item('torch',"You light up everywhere and the spirits run to the darkness"),
+            'bottle of water'=> new Item('water', 'You give water to the magic tree an receive a gift.')
+        ];
 
         $scenes['openingscene']->addTransition(new Transition('go to the shack!', $scenes['theShack']));
         $scenes['openingscene']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
+        $scenes['openingscene']->addItem($items['butterfly']);
 
 
         $scenes['zombiefight']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
         $scenes['zombiefight']->addTransition(new Transition('Go tp the Doom', $scenes['pitOfDoom']));
+        $scenes['zombiefight']->addItem($items["diaper"]);
 
         $scenes['unicorn']->addTransition(new Transition('Go back to the beginning', $scenes['openingscene']));
         $scenes['unicorn']->addTransition(new Transition('Go for the zombies', $scenes['zombiefight']));
-        $scenes['unicorn']->addItem(new Item('key'));
+        $scenes['unicorn']->addItem($items['key']);
 
         $scenes['pitOfDoom']->addTransition(new Transition('left', $scenes['zombiefight']));
         $scenes['pitOfDoom']->addTransition(new Transition('right', $scenes['theShack']));
@@ -69,6 +78,7 @@ class HomepageController
 
             if ($nextScene === null) {
                 $nextScene = $_SESSION['currentScene'];
+                $_SESSION['player'] = $player ;
                // die('Someboy or somegirl do this better than me!');//@todo!
             }
             $activeScene = $nextScene;

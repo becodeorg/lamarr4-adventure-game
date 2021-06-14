@@ -18,6 +18,8 @@ class Scene
     /** @var Item[] */
     private array $requiredItems = [];
 
+    private ?Scene $resolvedBy;
+
 
     public function __construct(string $title, string $description)
     {
@@ -92,5 +94,33 @@ class Scene
             }
         }
         return null;
+    }
+
+    /**
+     * @return Scene|null
+     */
+    public function getResolvedBy(): ?Scene
+    {
+        return $this->resolvedBy;
+    }
+
+    /**
+     * @param Scene|null $resolvedBy
+     */
+    public function setResolvedBy(?Scene $resolvedBy): void
+    {
+        $this->resolvedBy = $resolvedBy;
+    }
+
+    public function resolve(Scene $scene)
+    {
+        if(isset($this->resolvedBy) && $scene === $this->resolvedBy)
+        {
+            $this->transitions = [];
+            foreach ($scene->transitions as $transition)
+            {
+                $this->transitions[] = $transition;
+            }
+        }
     }
 }

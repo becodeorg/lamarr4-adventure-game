@@ -10,6 +10,26 @@
     color: #333;
 }
 
+body{
+    overflow: hidden;
+}
+
+.healthbar{
+    width: 50%;
+    height: 50px;
+    background: red;
+    border: 1px solid white;
+    margin-left: 25%;
+}
+
+.health{
+    height: 50px;
+    background: green;
+    margin-left: 25%;
+    position: absolute;
+    left: 0;
+}
+
 /* text */
 .first-section {
     top: 40px;

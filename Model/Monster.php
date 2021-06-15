@@ -46,6 +46,11 @@ class Monster
         return $this->damage;
     }
 
+    public function attack(Player $player): void
+    {
+        $player->damageHealth($this->damage);
+    }
+
 
 
 }

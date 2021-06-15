@@ -2,6 +2,7 @@
 
 <script>
     let message = "<?php echo $activeScene->getDescription() ?>";
+
     console.log(message);
     responsiveVoice.speak(message);
 </script>

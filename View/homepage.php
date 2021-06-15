@@ -12,6 +12,11 @@ include './View/includes/header.php';
 
 <main>
     <section class="first-section">
+        <div class="healthbar">
+            <div class="health">
+                <?php echo $player->getHealth(); ?>
+            </div>
+        </div>
         <form class="textcontent text-center mx-auto" action="" method="post">
             <label for="player">Your name</label>
             <input type="text" name="playerName" id="player">

@@ -12,3 +12,12 @@ function typeWriter(message) {
 }
 
 typeWriter(message);
+
+
+
+function updateHealth(health){
+    let amount = health*5;
+    document.getElementsByClassName('health')[0].style.width = amount+"%";
+}
+
+updateHealth(1);// todo help!

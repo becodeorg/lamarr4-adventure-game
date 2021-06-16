@@ -18,5 +18,3 @@ require 'Model/Diaper.php';
 
 $controller = new HomepageController();
 $controller->render();
-
-?>

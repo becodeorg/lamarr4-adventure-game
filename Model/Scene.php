@@ -37,6 +37,19 @@ class Scene
         return $this->transitions;
     }
 
+    /** @return Transition[] */
+    public function getValidTransitions(Player $player): array
+    {
+        $transitions = [];
+        foreach($this->getTransitions() AS $transition) {
+            if($transition->isValid($player)) {
+                $transitions[] = $transition;
+            }
+        }
+
+        return $transitions;
+    }
+
     public function getTitle(): string
     {
         return $this->title;

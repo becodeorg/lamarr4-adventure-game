@@ -32,11 +32,14 @@ include './View/includes/header.php';
 
             <p id="message"></p>
 
+
+            TEST
+
         <form class="textcontent text-center mx-auto" action="" method="post">
             <label for="command">What do you do?</label>
             <select class="form-control form-select-lg mb-5" aria-label="Default select example" name="command">
                 <option selected>--Select Movement--</option>
-                <?php foreach ($activeScene->getTransitions() as $transition):?>
+                <?php foreach ($activeScene->getValidTransitions($player) as $transition):?>
                 <option value="<?php echo $transition->getCommand();?>">
                     <?php echo $transition->getCommand();?>
                 </option>

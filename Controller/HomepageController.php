@@ -14,7 +14,6 @@ class HomepageController
 {
     public function render()
     {
-
         session_start();
 
         $scenes = [
@@ -23,8 +22,8 @@ class HomepageController
             'unicornPoop' => new Scene('Search for the unicorn.', 'Pilfering through the magical pony\'s poop you find a key. How\'d that get there? You decide to pocket it'),
             'zombieFight' => new Scene('Fight against the zombies!', 'Do you fight the zombies or do you walk away? After all, there a super slow!'),
             'pitOfDoom' => new Scene("big pit of doom!", "before you, the path suddenly halts as a giant crevice opens in the earth and stops your progress. you have no choice but to return to whence you came."),
-            'theShack' => new Scene("The abandoned shack", "It's an old abandoned shack! It looks as if it might collapse at any moment. This shack might hold a lot of useful tools for you to use!"),
-            'insideTheShack' => new Scene("you entered the shack", "") //@todo write more stuffs
+            'theShack' => new Scene("The abandoned shack", "It's an old abandoned shack! It looks as if it might collapse at any moment. This shack might hold a lot of useful tools for you to use! The door is locked."),
+            'insideTheShack' => new Scene("you entered the shack", "You enter the old, croacking woouden shack. Some dim lights shines on you from the crevices. In the darkness you can see a bottle of water on the ground.") //@todo write more stuffs
         ];
         $items = [
             'key' => new Item('key', 'You unlock the wooden door'),
@@ -57,7 +56,7 @@ class HomepageController
 
         $scenes['theShack']->addTransition(new Transition('left', $scenes['pitOfDoom']));
         $scenes['theShack']->addTransition(new Transition('right', $scenes['openingScene']));
-        // $scenes['theShack']->addTransition(new Transition('enter', $scenes['insideTheShack']));
+        $scenes['theShack']->addTransition(new Transition('enter the shack', $scenes['insideTheShack'], $items['key']));
 
         // @ Todo check if item is stored in player
 
@@ -105,13 +104,6 @@ class HomepageController
                 }
             }
         }
-
-        if (!empty($_POST['command']) && $_POST['command'] === "help") {
-
-            $helpmessage = "available commands are 'left, right , use, search";
-
-        }
-
 
         if (isset($_GET['action']) && isset($_GET['item_id'])) {
             if ($_GET['action'] === 'use') {

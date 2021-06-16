@@ -49,6 +49,16 @@ class Player
         $this->items[] = $item;
     }
 
+    public function findItem(Item $item) : bool
+    {
+        foreach($this->items AS $potentialItem) {
+            if($potentialItem->getName() === $item->getName()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * @return int
      */

@@ -51,11 +51,18 @@ include './View/includes/header.php';
             </select>
         </form>
 
-            <ul>
-                <?php foreach ($player->getItems() AS $item): ?>
-                    <li><?php echo $item->getName() ?></li>
-                <?php endforeach;?>
-            </ul>
+
+                <div class="content">
+                    <div class="inventory">
+                        <h1 class="invTitle">Inventory</h1>
+                        <div class="slot">
+                                <?php foreach ($player->getItems() AS $item): ?>
+                                    <li class="items"><?php echo $item->getName() ?></li>
+                                <?php endforeach;?>
+                        </div>
+                    </div>
+                </div>
+
 
 
     </section>

@@ -15,6 +15,7 @@ class HomepageController
     public function render()
     {
         session_start();
+        session_destroy();
 
         $scenes = [
             'openingScene' => new Scene('Welcome to the game,', 'The world is gone. The only thing left in the rubble is a road. The way up is blocked by angry crows! To the right you see a skeleton and zombies! To the left there are traces of a unicorn. Which way do you go?'),
@@ -26,12 +27,12 @@ class HomepageController
             'insideTheShack' => new Scene("you entered the shack", "You enter the old, croacking woouden shack. Some dim lights shines on you from the crevices. In the darkness you can see a bottle of water on the ground.") //@todo write more stuffs
         ];
         $items = [
-            'key' => new Item('key', 'You unlock the wooden door'),
-            'diaper' => new Diaper('Mr.dirty diaper', 'Ypu scoop of the magic'),
-            'butterfly' => new Item("butterfly", "The butterfly distracts the zombies away."),
-            'torch' => new Item('torch', "You light up everywhere and the spirits run to the darkness"),
-            'bottle of water' => new Item('water', 'You give water to the magic tree an receive a gift.'),
-            'machete' =>new Item('machete', 'cleave'),
+            'key' => new Item('key', 'You unlock the wooden door', "img/butterfly.png"),
+            'diaper' => new Diaper('Mr.dirty diaper', 'Ypu scoop of the magic', "img/butterfly.png"),
+            'butterfly' => new Item("butterfly", "The butterfly distracts the zombies away.", "img/butterfly.png"),
+            'torch' => new Item('torch', "You light up everywhere and the spirits run to the darkness", "img/butterfly.png"),
+            'bottle of water' => new Item('water', 'You give water to the magic tree an receive a gift.', "img/butterfly.png"),
+            'machete' =>new Item('machete', 'cleave', "img/butterfly.png"),
         ];
 
         $scenes['openingScene']->addTransition(new Transition('go to the shack!', $scenes['theShack']));

@@ -64,7 +64,28 @@ li {
     font-weight: bold;
 }
 
-.textcontent {
+.game-container {
+    width: 50%;
+    background-color: rgba(245, 245, 245, 0.85);
+    border-radius: 8px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    transform: scale(0,8);
+}
+
+/* someone pls fix scale, turn off scale to see container */
+
+.inner-container {
+    width: 100%;
+    background-color: lightgrey;
+    border-radius: 8px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.playerName {
     width: 50%;
     background-color: rgba(245, 245, 245, 0.85);
     border-radius: 8px;

@@ -91,5 +91,8 @@ class Player
         $this->skill += $skill;
     }
 
+    public function attack(Monster $monster): void {
+        $monster->damageHealth($this->getSkill());
+    }
 
 }

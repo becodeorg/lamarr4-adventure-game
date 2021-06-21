@@ -20,6 +20,9 @@ class Scene
 
     private ?Scene $resolvedBy;
 
+    /** @var Monster[] */
+    private array $monsters = [];
+
 
     public function __construct(string $title, string $description)
     {
@@ -136,4 +139,22 @@ class Scene
             }
         }
     }
+
+    /**
+     * @return Monster[]
+     */
+    public function getMonsters(): array
+    {
+        return $this->monsters;
+    }
+
+    /**
+     * @param Monster[] $monsters
+     */
+    public function addMonster(Monster $monsters): void
+    {
+        $this->monsters[] = $monsters;
+    }
+
+
 }

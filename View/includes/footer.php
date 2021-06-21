@@ -4,7 +4,7 @@
     let message = "<?php echo $activeScene->getDescription() ?>";
 
     console.log(message);
-    responsiveVoice.speak(message);
+    // responsiveVoice.speak(message);
 </script>
 <script src="Javascript/typewriter.js"></script>
 

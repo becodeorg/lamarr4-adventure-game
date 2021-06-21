@@ -29,6 +29,10 @@ include './View/includes/header.php';
 
                 <p id="message"></p>
 
+                <p>You are facing:</p>
+                <?php //todo show monsters on the screen ?>
+
+
                 <div class="inner-container">
                     <div class="healthbar">
                         <div class="health">

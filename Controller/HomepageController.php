@@ -6,6 +6,7 @@ namespace Controller;
 
 use Model\Diaper;
 use Model\Item;
+use Model\Monster;
 use Model\Player;
 use Model\Scene;
 use Model\Transition;
@@ -34,6 +35,10 @@ class HomepageController
             'bottle of water' => new Item('water', 'You give water to the magic tree an receive a gift.', "img/butterfly.png"),
             'machete' =>new Item('machete', 'cleave', "img/butterfly.png"),
         ];
+        $monsters = [
+            'zombie' => new Monster('zombie', 1, 1),
+            'dragon' => new Monster('Dragon', 5000, 5)
+        ];
 
         $scenes['openingScene']->addTransition(new Transition('go to the shack!', $scenes['theShack']));
         $scenes['openingScene']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
@@ -43,6 +48,7 @@ class HomepageController
         $scenes['zombieFight']->addTransition(new Transition('unicorn yeih!', $scenes['unicorn']));
         $scenes['zombieFight']->addTransition(new Transition('Go tp the Doom', $scenes['pitOfDoom']));
         $scenes['zombieFight']->addItem($items["diaper"]);
+        $scenes['zombieFight']->addMonster($monsters['zombie']);
 
         $scenes['unicorn']->addTransition(new Transition('Go back to the beginning', $scenes['openingScene']));
         $scenes['unicorn']->addTransition(new Transition('Go for the zombies', $scenes['zombieFight']));
@@ -88,14 +94,20 @@ class HomepageController
         }
 
 
-        if (!empty($activeScene->getItems())) {
+//        if (!empty($activeScene->getItems())) {
             foreach ($activeScene->getItems() as $item) {
 
                 $player->addItem($item);
                 $activeScene->removeItem($item);
             }
 
-        }
+//        }
+
+
+            foreach($activeScene->getMonsters() AS $monster) {
+                $monster->getName();
+            }
+
 
 
         if (!empty($_GET['action'])) {

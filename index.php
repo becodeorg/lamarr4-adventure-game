@@ -16,6 +16,7 @@ require 'Model/Scene.php';
 require 'Model/Transition.php';
 require 'Model/Diaper.php';
 require 'Model/Monster.php';
+require 'Model/StoryManager.php';
 
 $controller = new HomepageController();
 $controller->render();

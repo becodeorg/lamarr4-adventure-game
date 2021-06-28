@@ -11,6 +11,9 @@ class Scene
 
     private string $title;
     private string $description;
+    private string $view = './View/includes/';
+
+
 
     /** @var Item[] */
     private array $items = [];
@@ -24,10 +27,19 @@ class Scene
     private array $monsters = [];
 
 
-    public function __construct(string $title, string $description)
+    public function __construct(string $title,string $view, string $description)
     {
         $this->title = $title;
+        $this->view .= $view;
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getView(): string
+    {
+        return $this->view;
     }
 
     public function addTransition(Transition $transition)

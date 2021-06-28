@@ -75,7 +75,7 @@ include './View/includes/header.php';
 
     </section>
     <?php
-include './View/includes/openingScene.php'; ?>
+include($activeScene->getView()); ?>
 </main>
 
 

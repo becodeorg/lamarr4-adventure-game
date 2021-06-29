@@ -25,6 +25,8 @@ class HomepageController
     public function __construct()
     {
         $this->storyManager = new StoryManager();
+        $this->storyManager->initializeLevel();
+
     }
 
 

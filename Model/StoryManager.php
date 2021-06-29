@@ -36,7 +36,7 @@ class StoryManager
     }
 
 
-    private function initializeLevel(): void
+    public function initializeLevel(): void
     {
         $this->scenes = [
             'openingScene' => new Scene('Welcome to the game,','openingScene.php', 'The world is gone. The only thing left in the rubble is a road. The way up is blocked by angry crows! To the right you see a skeleton and zombies! To the left there are traces of a unicorn. Which way do you go?'),

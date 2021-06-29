@@ -425,3 +425,31 @@ inset -2px -2px 0px #ffffff;
     top: 70%;
     left: 20%;
 }
+
+.zombieBackground {
+    background-image: url("../img/zombieScene/zombie-background.png");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+}
+
+.lightning {
+    background: url("../img/zombieScene/lightning.gif") no-repeat;
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 250px;
+    height: 350px;
+    z-index: 1;
+}
+
+.zombie {
+    background: url("../img/zombieScene/zombiewave.gif") no-repeat;
+    position: absolute;
+    top: 65%;
+    left: 85%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}

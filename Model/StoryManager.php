@@ -41,7 +41,7 @@ class StoryManager
         $this->scenes = [
             'openingScene' => new Scene('Welcome to the game,','openingScene.php', 'The world is gone. The only thing left in the rubble is a road. The way up is blocked by angry crows! To the right you see a skeleton and zombies! To the left there are traces of a unicorn. Which way do you go?'),
             'unicorn' => new Scene('Search for the unicorn.','unicornScene.php', 'You are looking for the unicorn. But you do not see him, only some hoofs left in the poop. But there is something else in the poop... namely, a key! All shiny.'),
-            'unicornPoop' => new Scene('Search for the unicorn.','poopScene.php', 'Pilfering through the magical pony\'s poop you find a key. How\'d that get there? You decide to pocket it'),
+            'unicornPoop' => new Scene('You\'ve awakened the fury of the poop!','poopScene.php', 'The key\'s protector is more than ready to challenge you, you can either fight for the key or run away!'),
             'zombieFight' => new Scene('Fight against the zombies!','zombieScene.php', 'Do you fight the zombies or do you walk away? After all, there a super slow!'),
             'pitOfDoom' => new Scene("big pit of doom!",'doomScene.php', "before you, the path suddenly halts as a giant crevice opens in the earth and stops your progress. you have no choice but to return to whence you came."),
             'theShack' => new Scene("The abandoned shack",'shackScene.php', "It's an old abandoned shack! It looks as if it might collapse at any moment. This shack might hold a lot of useful tools for you to use! The door is locked."),
@@ -58,7 +58,8 @@ class StoryManager
         ];
         $this->monsters = [
             'zombie' => new Monster('zombie', 1, 1),
-            'dragon' => new Monster('Dragon', 5000, 5)
+            'dragon' => new Monster('Dragon', 5000, 5),
+            'meanPoop'=> new Monster('Mr. Hankey', 50,50)
         ];
 
         //pit--unicorn--openingScene--zombie
@@ -75,11 +76,12 @@ class StoryManager
 
         $this->scenes['unicorn']->addTransition(new Transition('Go back to the beginning', $this->scenes['openingScene']));
         $this->scenes['unicorn']->addTransition(new Transition('Go for the zombies', $this->scenes['zombieFight']));
-        $this->scenes['unicorn']->addTransition(new Transition('poop', $this->scenes['unicornPoop']));
+        $this->scenes['unicorn']->addTransition(new Transition('Get the key', $this->scenes['unicornPoop']));
 
         $this->scenes['unicornPoop']->addTransition(new Transition('Go back to the beginning', $this->scenes['openingScene']));
         $this->scenes['unicornPoop']->addTransition(new Transition('Go for the zombies', $this->scenes['zombieFight']));
         $this->scenes['unicornPoop']->addItem($this->items['key']);
+        $this->scenes['unicornPoop']->addMonster($this->monsters['meanPoop']);
 
         $this->scenes['pitOfDoom']->addTransition(new Transition('Shuffle to the zombies ♫', $this->scenes['zombieFight']));
         $this->scenes['pitOfDoom']->addTransition(new Transition('Run to the shack', $this->scenes['theShack']));

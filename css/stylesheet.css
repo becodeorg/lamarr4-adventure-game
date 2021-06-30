@@ -278,12 +278,19 @@ li {
     }
 }
 
-.title {
+.title  {
     font-size: 48px;
     color: #d8d8f6;
     padding: 10px;
     animation: neon .9s ease-in-out infinite alternate;
 }
+
+.attackMonster{
+    font-size: 30px;
+    color: #d8d8f6;
+    animation: neon .9s ease-in-out infinite alternate;
+}
+
 
 @keyframes neon {
     from  {

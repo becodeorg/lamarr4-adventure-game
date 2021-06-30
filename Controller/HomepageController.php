@@ -30,6 +30,8 @@ class HomepageController
     }
 
 
+
+
     public function render()
     {
         session_start();
@@ -54,6 +56,7 @@ class HomepageController
         }
 
 
+
 //        if (!empty($activeScene->getItems())) {
         foreach ($this->currentScene->getItems() as $item)
         {
@@ -64,10 +67,10 @@ class HomepageController
 
 //        }
 
-//TODO: figure it out for yourself
-//            foreach($this->currentScene->getMonsters() AS $monster) {
-//                $monster->getName();
-//            }
+
+           foreach($this->currentScene->getMonsters() AS $monster) {
+                $monster->getName();
+            }
 
 
         if (!empty($_GET['action']))

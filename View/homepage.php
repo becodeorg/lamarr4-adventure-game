@@ -6,6 +6,7 @@ include './View/includes/header.php';
 
 /** @var Player $player
  * @var Scene $activeScene
+ * @var Model\Monster $monster
  */
 
 ?>
@@ -29,8 +30,16 @@ include './View/includes/header.php';
 
                 <p id="message"></p>
 
-                <p>You are facing:</p>
-                <?php //todo show monsters on the screen ?>
+               <?php if (isset($monster)){?>
+
+                    <h3>Your Opponent is:</h3>
+                    <h1><?php echo $monster->getName(); ?></h1>
+                   <form class="attackMonster" method="post">
+                    <label for="attack"></label>
+                    <input name="attack" class="buttonz" type="submit" value="<?php $player->attack($monster);?> Attack">
+                </form>
+                <?php } ?>
+
 
 
                 <div class="inner-container">

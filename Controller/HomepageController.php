@@ -73,14 +73,32 @@ class HomepageController
             }
 
 
+           switch ($_GET['action']){
+               case 'use':
+                   foreach ($this->currentScene->getItems() as $item)
+                   {
+                       $item->use();
+                   }
+                   break;
+               case 'attack':
+                   foreach ($this->currentScene->getMonsters() as $monster)
+                   {
+                       $monster->getName();
+                       $this->player->attack();
+                       $monster->attack();
+                       if ($monster->getHealth() == 0){
+                           $this->currentScene->getMonsters() //todo watch out its not finished, monsters need to be filled in!
+                       }
+                   }
+
+
+
+           }
         if (!empty($_GET['action']))
         {
             if ($_GET['action'] === 'use')
             {
-                foreach ($this->currentScene->getItems() as $item)
-                {
-                    $item->use();
-                }
+
             }
         }
 

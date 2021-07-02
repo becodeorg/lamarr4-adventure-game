@@ -168,5 +168,9 @@ class Scene
         $this->monsters[] = $monsters;
     }
 
+    public function removeDefeatedMonster(){
+
+    }
+
 
 }

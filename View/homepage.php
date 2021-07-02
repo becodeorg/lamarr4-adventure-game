@@ -34,7 +34,8 @@ include './View/includes/header.php';
 
                     <h3>Your Opponent is:</h3>
                     <h1><?php echo $monster->getName(); ?></h1>
-                   <form class="attackMonster" method="post">
+                   <form class="attackMonster" method="GET">
+                       <input type="hidden" value="attack" name="attack">
                     <label for="attack"></label>
                     <input name="attack" class="buttonz" type="submit" value="<?php $player->attack($monster);?> Attack">
                 </form>

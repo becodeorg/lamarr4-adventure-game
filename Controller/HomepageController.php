@@ -87,7 +87,7 @@ class HomepageController
                        $this->player->attack();
                        $monster->attack();
                        if ($monster->getHealth() == 0){
-                           $this->currentScene->getMonsters() //todo watch out its not finished, monsters need to be filled in!
+                           $this->currentScene->getMonsters() //todo watch out its not finished, monsters need to be filled in! Also watch out, this switch case must replace the other if statements from line 97 till 112
                        }
                    }
 

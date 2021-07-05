@@ -18,6 +18,7 @@ typeWriter(message);
 function updateHealth(health){
     let amount = health*5;
     document.getElementsByClassName('health')[0].style.width = amount+"%";
+    document.getElementsByClassName('health')[0].innerText = health;
 }
 
-updateHealth(1);// todo help!
+updateHealth(health);// todo help!

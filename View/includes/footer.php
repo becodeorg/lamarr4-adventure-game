@@ -2,6 +2,7 @@
 
 <script>
     let message = "<?php echo $activeScene->getDescription() ?>";
+    let health = <?php echo $player->getHealth() ?>;
 
     console.log(message);
     // responsiveVoice.speak(message);

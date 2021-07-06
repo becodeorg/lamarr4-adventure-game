@@ -4,6 +4,7 @@
 namespace Controller;
 
 
+use Model\Battle;
 use Model\Diaper;
 use Model\Item;
 use Model\Monster;
@@ -12,12 +13,14 @@ use Model\Scene;
 use Model\StoryManager;
 use Model\Transition;
 
+
 class HomepageController
 {
 
     private Scene $currentScene;
     private Player $player;
     private StoryManager $storyManager;
+    private Battle $battle;
 
     /**
      * HomepageController constructor.
@@ -26,6 +29,7 @@ class HomepageController
     {
         $this->storyManager = new StoryManager();
         $this->storyManager->initializeLevel();
+        $this->battle = new Battle();
 
     }
 
@@ -83,17 +87,11 @@ class HomepageController
                     }
                     break;
                 case 'attack':
-                    foreach ($this->currentScene->getMonsters() as $monster)
-                    {
-                        $monster->getName();
-                        $this->player->attack($monster);
-                        $monster->attack($this->player);
-                        if ($monster->getHealth() == 0){
-                            $this->currentScene->killMonster($monster);
-                            $this->currentScene->getMonsters(); //todo watch out its not finished, monsters need to be filled in! Also watch out, this switch case must replace the other if statements from line 97 till 112
-                        }
-                    }
+                    foreach ($this->currentScene->getMonsters() as $monster) {
 
+                        $this->battle->battle($monster,$this->player,$this->currentScene);
+
+                    }
             }
         }
 

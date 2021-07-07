@@ -169,14 +169,9 @@ class Scene
     }
 
     public function killMonster(Monster $monster): void{
-        if (($key = array_search($monster, $this->monsters[])) !== false) {
+        if (($key = array_search($monster, $this->monsters)) !== false) {
             unset($this->monsters[$key]);
         }
     }
-
-    public function removeDefeatedMonster(){
-
-    }
-
 
 }

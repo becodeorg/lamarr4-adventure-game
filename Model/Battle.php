@@ -34,7 +34,7 @@ class Battle
             $this->messages['playerHit'] = " You hit ". $monster->getName()."for".$player->getSkill() ."hp";
             $monster->attack($player);
             $this->messages['monsterHit'] = $monster->getName()." hitted you for ".$monster->getDamage();
-            if ($monster->getHealth() == 0){
+            if ($monster->getHealth() <= 0){
                 $currentScene->killMonster($monster);
 
                 //$currentScene->getMonsters(); //todo watch out its not finished, monsters need to be filled in! Also watch out, this switch case must replace the other if statements from line 97 till 112

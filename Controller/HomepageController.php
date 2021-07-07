@@ -72,13 +72,10 @@ class HomepageController
 //        }
 
 
-           foreach($this->currentScene->getMonsters() AS $monster) {
-                $monster->getName();
-            }
-
 
         if (!empty($_GET['action']))
         {
+
             switch ($_GET['action']){
                 case 'use':
                     foreach ($this->currentScene->getItems() as $item)
@@ -93,6 +90,10 @@ class HomepageController
 
                     }
             }
+        }
+
+        foreach($this->currentScene->getMonsters() AS $monster) {
+            $monster->getName();
         }
 
         if (isset($_GET['action'], $_GET['item_id']))

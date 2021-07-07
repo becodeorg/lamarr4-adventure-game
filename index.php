@@ -8,15 +8,7 @@ error_reporting(E_ALL);
 
 use Controller\HomepageController;
 
-require 'Controller/HomepageController.php';
-require 'Model/ItemInterface.php';
-require 'Model/Item.php';
-require 'Model/Player.php';
-require 'Model/Scene.php';
-require 'Model/Transition.php';
-require 'Model/Diaper.php';
-require 'Model/Monster.php';
-require 'Model/StoryManager.php';
+require "vendor/autoload.php";
 
 $controller = new HomepageController();
 $controller->render();

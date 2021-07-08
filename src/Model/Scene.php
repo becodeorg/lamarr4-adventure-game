@@ -11,7 +11,7 @@ class Scene
 
     private string $title;
     private string $description;
-    private string $view = './View/includes/';
+    private string $view = './View/scenes/';
 
 
 

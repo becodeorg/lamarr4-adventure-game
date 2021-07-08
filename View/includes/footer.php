@@ -7,7 +7,7 @@
     console.log(message);
     // responsiveVoice.speak(message);
 </script>
-<script src="Javascript/typewriter.js"></script>
+<script src="public/Javascript/typewriter.js"></script>
 
 </body>
 </html>

@@ -49,12 +49,12 @@ class StoryManager
             //@todo write more stuffs
         ];
         $this->items = [
-            'key' => new Item('key', 'You unlock the wooden door', "img/butterfly.png"),
-            'diaper' => new Diaper('Mr.dirty diaper', 'Ypu scoop of the magic', "img/butterfly.png"),
-            'butterfly' => new Item("butterfly", "The butterfly distracts the zombies away.", "img/butterfly.png"),
-            'torch' => new Item('torch', "You light up everywhere and the spirits run to the darkness", "img/butterfly.png"),
-            'bottle of water' => new Item('water', 'You give water to the magic tree an receive a gift.', "img/butterfly.png"),
-            'machete' => new Item('machete', 'cleave', "img/butterfly.png"),
+            'key' => new Item('key', 'You unlock the wooden door', "public/img/inventory/butterfly.png"),
+            'diaper' => new Diaper('Mr.dirty diaper', 'Ypu scoop of the magic', "public/img/inventory/butterfly.png"),
+            'butterfly' => new Item("butterfly", "The butterfly distracts the zombies away.", "public/img/inventory/butterfly.png"),
+            'torch' => new Item('torch', "You light up everywhere and the spirits run to the darkness", "public/img/inventory/butterfly.png"),
+            'bottle of water' => new Item('water', 'You give water to the magic tree an receive a gift.', "public/img/inventory/butterfly.png"),
+            'machete' => new Item('machete', 'cleave', "public/img/inventory/butterfly.png"),
         ];
         $this->monsters = [
             'zombie' => new Monster('zombie', 1, 1),

@@ -16,9 +16,9 @@ typeWriter(message);
 
 
 function updateHealth(health){
-    let amount = health*5;
-    document.getElementsByClassName('health')[0].style.width = amount+"%";
-    document.getElementsByClassName('health')[0].innerText = health;
+    let amount = health*10;
+    document.getElementsByClassName('playerHealth')[0].style.background = `linear-gradient(to right, green ${amount}%, darkred ${amount}%)`;
+    document.getElementsByClassName('playerHealth')[0].innerText = health;
 }
 
 updateHealth(health);// todo help!

@@ -43,9 +43,7 @@ include './View/includes/header.php';
 
 
                 <div class="inner-container">
-                    <div class="healthbar">
-                        <div class="health">
-                            <?php echo $player->getHealth(); ?>
+                    <div class="playerHealth"><?php echo $player->getHealth(); ?>
                         </div>
                         <div class="content">
                             <div class="inventory">

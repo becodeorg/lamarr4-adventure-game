@@ -34,8 +34,6 @@ class HomepageController
     }
 
 
-
-
     public function render()
     {
         session_start();
@@ -46,24 +44,21 @@ class HomepageController
         $this->selectCurrentPlayer($_SESSION, new Player('Dummy'));
         $this->redefinePlayerName($_POST);
 
-        if (!empty($_POST['command']))
-        {
+        if (!empty($_POST['command'])) {
 
             $nextScene = $this->currentScene->getSceneByCommand($_POST['command']);
 
-            if ($nextScene instanceof Scene)
-            {
+            if ($nextScene instanceof Scene) {
                 $this->currentScene->resolve($nextScene);
                 $this->currentScene = $nextScene;
+                $this->redirect();
                 // die('Someboy or somegirl do this better than me!');//@todo!
             }
         }
 
 
-
 //        if (!empty($activeScene->getItems())) {
-        foreach ($this->currentScene->getItems() as $item)
-        {
+        foreach ($this->currentScene->getItems() as $item) {
 
             $this->player->addItem($item);
             $this->currentScene->removeItem($item);
@@ -72,41 +67,43 @@ class HomepageController
 //        }
 
 
+        if (!empty($_GET['action'])) {
 
-        if (!empty($_GET['action']))
-        {
-
-            switch ($_GET['action']){
+            switch ($_GET['action']) {
                 case 'use':
-                    foreach ($this->currentScene->getItems() as $item)
-                    {
+                    foreach ($this->currentScene->getItems() as $item) {
                         $item->use();
                     }
                     break;
                 case 'attack':
                     foreach ($this->currentScene->getMonsters() as $monster) {
 
-                        $this->battle->battle($monster,$this->player,$this->currentScene);
+                        $this->battle->battle($monster, $this->player, $this->currentScene);
 
                     }
             }
+            $this->redirect();
         }
 
-        foreach($this->currentScene->getMonsters() AS $monster) {
+        if ($this->player->getHealth() <= 0) {
+            $this->storeInSession();
+            require_once "View/game_over.php";
+            exit;
+        }
+
+        foreach ($this->currentScene->getMonsters() as $monster) {
             $monster->getName();
         }
 
-        if (isset($_GET['action'], $_GET['item_id']))
-        {
-            if ($_GET['action'] === 'use')
-            {
+        if (isset($_GET['action'], $_GET['item_id'])) {
+            if ($_GET['action'] === 'use') {
                 //todo $the_item = $activeScene->getItemById($_GET['item_id']);
                 //todo $the_item->use();
             }
         }
-        $_SESSION['currentScene'] = $this->currentScene;
+
+        $this->storeInSession();
         $activeScene = $this->currentScene;
-        $_SESSION['player'] = $this->player;
         $player = $this->player;
 
         require 'View/homepage.php';
@@ -117,18 +114,30 @@ class HomepageController
         $this->currentScene = (isset($session['currentScene']) && $session['currentScene'] instanceof Scene) ? $session['currentScene'] : $openingScene;
     }
 
-    private function selectCurrentPlayer(array $session, Player $defaultPlayer ): void
+    private function selectCurrentPlayer(array $session, Player $defaultPlayer): void
     {
         $this->player = (isset($session['player']) && $session['player'] instanceof Player) ? $session['player'] : $defaultPlayer;
     }
 
     private function redefinePlayerName(array $post): void
     {
-        if (isset($_POST['playerName']))
-        {
+        if (isset($_POST['playerName'])) {
 
             $this->player->setName($_POST['playerName']);
 
         }
+    }
+
+    private function storeInSession(): void
+    {
+        $_SESSION['currentScene'] = $this->currentScene;
+        $_SESSION['player'] = $this->player;
+    }
+
+    private function redirect()
+    {
+        $this->storeInSession();
+        header("Location:index.php");
+        exit;
     }
 }

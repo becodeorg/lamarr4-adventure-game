@@ -14,11 +14,11 @@ body{
     overflow: hidden;
 }
 
-.healthbar{
+.playerHealth{
     width: 50%;
-    height: 50px;
-    background: red;
-    border: 1px solid white;
+    height: 35px;
+    border: 2px solid white;
+    border-radius: 25px;
     margin-left: 25%;
 }
 
